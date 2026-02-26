@@ -1,0 +1,1276 @@
+
+
+/* =========================================================
+   ZIPPORA — CLEAN CSS (token-first, no legacy duplicates)
+
+   Breakpoints:
+   Mobile:        <=600
+   Bridge:        601–833
+   Tablet:        834–1024
+   Small Desktop: 1025–1239
+   Desktop:       1240+
+
+   Notes:
+   - label-icons is the only “label + icons” system used everywhere.
+   - Hero + Music use the SAME gap tokens you locked:
+     375–1024: label gap 6, icon gap 6, title gap 18
+     1025+:    icon gap 8 (label gap stays 6)
+========================================================= */
+
+/* =========================
+   RESET
+========================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* =========================
+   TOKENS (DESKTOP DEFAULTS) — 1240+
+========================= */
+:root {
+  --color-light: #E5DCCF;
+  --color-dark: #242424;
+
+  --radius: 30px;
+
+  /* =========================================================
+     LAYOUT GRID (FIGMA SOURCE OF TRUTH)
+     Mobile 375:  6 cols, margin 16, gutter 6
+     Tablet 834:  5 cols, margin 80, gutter 24
+     Desktop 1440: 12 cols, margin 120, gutter 24, frame 1440
+  ========================================================= */
+  --grid-columns: 6;
+  --grid-margin: 16px;
+  --grid-gutter: 6px;
+
+  /* Container behavior (driven by grid margin) */
+  --container-max: none;
+  --container-pad-x: var(--grid-margin);
+
+  /* Typography (True desktop / 1440 design) */
+  --h1-size: 325px;
+  --h2-size: 50px;
+  --h3-size: 30px;
+  --h4-size: 25px; /* Nav + labels */
+  --h5-size: 13px; /* CTA */
+  --body-size: 30px;
+  --footer-size: 10px;
+
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-bold: 700;
+
+  /* Rhythm (desktop baseline) */
+  --section-pad-y: 34px;
+  --h2-gap: 24px;
+  --p-gap: 16px;
+
+  /* Component helpers */
+  --line: var(--color-dark);
+
+  /* HERO crop control */
+  --hero-focus-x: 50%;
+  --hero-focus-y: 22%;
+
+  /* HERO rail alignment */
+  --hero-rail-pad-right: 2px;
+
+  /* HERO title-only nudge (H1 only, not platforms) WED 4 Feb */
+  --hero-title-right-nudge: 0px;
+
+  /* HERO bottom pad (define globally so it never becomes invalid) */
+  --hero-bottom-pad: clamp(0px, 1.2vh, 0px);
+
+  /* Shared label+icons defaults */
+  --li-label-gap: 6px;
+  --li-icon-gap: 6px;
+  --li-icon-size: 16px;
+
+  /* HERO + MUSIC locked spacing */
+  --hero-li-label-gap: 6px; /* label -> icons */
+  --hero-li-icon-gap: 8px;  /* between icons (changes at 1025+) */
+  --hero-title-gap: 18px;   /* platforms block -> H1 */
+
+  /* MUSIC sizing */
+  --music-label-size: var(--h4-size);
+  --music-icon-size: 20px;
+
+  /* Music arrows */
+  --music-arrow-inset: -14px; /* tweak this number */
+
+  /* ABOUT overlap token (fluid) */
+--about-overlap: clamp(-75px, -6vw, -45px);
+}
+
+/* =========================================================
+   FIGMA GRID OVERRIDES
+========================================================= */
+
+/* Tablet grid (Figma 834) */
+@media (min-width: 834px) {
+  :root {
+    --grid-columns: 5;
+    --grid-margin: 80px;
+    --grid-gutter: 24px;
+
+    --container-max: none; /* stretch */
+  }
+}
+
+/* Desktop grid (Figma 1440) */
+@media (min-width: 1440px) {
+  :root {
+    --grid-columns: 12;
+    --grid-margin: 120px;
+    --grid-gutter: 24px;
+
+    --container-max: 1440px; /* matches Figma frame */
+  }
+}
+
+/* =========================
+   TOKENS — MOBILE (<=600)
+========================= */
+@media (max-width: 600px) {
+  :root {
+    --h1-size: 95px;
+    --h2-size: 18px;
+    --h3-size: 16px;
+    --h4-size: 11px;
+    --h5-size: 9px;
+    --body-size: 14px;
+    --footer-size: 6px;
+
+    --hero-focus-y: 12%;
+
+    --music-label-size: var(--h4-size);
+    --music-icon-size: 20px;
+  }
+}
+
+/* =========================
+   TOKENS — BRIDGE (601–833)
+========================= */
+@media (min-width: 601px) and (max-width: 833px) {
+  :root {
+    --h1-size: 140px;
+    --h2-size: 24px;
+    --h3-size: 18px;
+    --h4-size: 13px;
+    --h5-size: 11px;
+
+    --body-size: 17px;
+    --footer-size: 8px;
+
+    --section-pad-y: 48px;
+    --h2-gap: 28px;
+    --p-gap: 18px;
+
+    --hero-focus-y: 16%;
+
+    --music-label-size: var(--h4-size);
+    --music-icon-size: 24px;
+  }
+}
+
+/* =========================
+   TOKENS — TABLET (834–1024)
+========================= */
+@media (min-width: 834px) and (max-width: 1024px) {
+  :root {
+    --h1-size: 189px;
+    --h2-size: 30px;
+    --h3-size: 20px;
+    --h4-size: 16px;
+    --h5-size: 13px;
+
+    --body-size: 17px;
+    --footer-size: 10px;
+
+    --section-pad-y: 48px;
+    --h2-gap: 28px;
+    --p-gap: 18px;
+
+    --hero-focus-y: 18%;
+    --hero-title-right-nudge: 32px;
+   
+    --music-label-size: var(--h4-size);
+    --music-icon-size: 24px;
+  }
+}
+
+/* =========================
+   TOKENS — SMALL DESKTOP (1025–1239)
+========================= */
+@media (min-width: 1025px) and (max-width: 1239px) {
+  :root {
+    --h1-size: 240px;
+    --h2-size: 36px;
+    --h3-size: 22px;
+    --h4-size: 18px;
+    --h5-size: 13px;
+
+    --body-size: 18px;
+    --footer-size: 10px;
+
+    --section-pad-y: 48px;
+    --h2-gap: 28px;
+    --p-gap: 18px;
+
+    --hero-focus-y: 20%;
+    --hero-title-right-nudge: 32px;
+
+    --music-label-size: var(--h4-size);
+    --music-icon-size: 24px;
+
+    --hero-li-icon-gap: 8px;
+  }
+}
+
+/* =========================
+   TOKENS — TRUE DESKTOP (1240+)
+========================= */
+@media (min-width: 1240px) {
+  :root {
+    --section-pad-y: 68px;
+    --h2-gap: 32px;
+    --p-gap: 20px;
+
+    --hero-title-right-nudge: 20px;
+
+    --music-icon-size: 32px;
+  }
+}
+
+/* =========================
+   BASE
+========================= */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 120px;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Oswald", sans-serif;
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  font-size: var(--body-size);
+  font-weight: var(--weight-light);
+  line-height: 1.5;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad-x);
+}
+
+section {
+  padding: var(--section-pad-y) 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+  gap: var(--grid-gutter);
+}
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+h1,
+h2,
+h3,
+h4,
+h5 {
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: var(--h1-size);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+}
+
+h2 {
+  font-size: var(--h2-size);
+  font-weight: var(--weight-bold);
+  margin-bottom: var(--h2-gap);
+  line-height: 1.1;
+}
+
+h3 {
+  font-size: var(--h3-size);
+  font-weight: var(--weight-bold);
+  line-height: 1.1;
+}
+
+h4 {
+  font-size: var(--h4-size);
+  font-weight: var(--weight-bold);
+  line-height: 1.1;
+}
+
+h5 {
+  font-size: var(--h5-size);
+  font-weight: var(--weight-regular);
+  line-height: 1.1;
+}
+
+p {
+  margin-bottom: var(--p-gap);
+}
+
+.ui-label {
+  font-size: var(--h4-size);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* (Everything below this point is unchanged from your original CSS) */
+/* =========================================================
+   DISPLAY TITLE (giant word)
+========================================================= */
+.display-title {
+  width: 100%;
+  display: block;
+
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  line-height: 1;
+  margin: 0;
+  letter-spacing: -0.01em;
+
+  /* no font-size here */
+}
+
+/* =========================
+   CTA BUTTONS
+========================= */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  font: inherit;
+  font-size: var(--h5-size);
+  font-weight: var(--weight-regular);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1;
+
+  border-radius: 999px;
+  border: 1px solid var(--color-dark);
+
+  text-decoration: none;
+  cursor: pointer;
+
+  transition: transform 0.12s ease, opacity 0.12s ease;
+}
+
+.cta:active {
+  transform: translateY(1px);
+}
+
+.cta--dark {
+  background-color: var(--color-dark);
+  color: var(--color-light);
+}
+
+.cta--outline {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+}
+
+.cta--sm {
+  padding: 4px 12px;
+}
+
+.cta--md {
+  padding: 10px 16px;
+}
+
+/* =========================================================
+   LABEL + ICONS (single system)
+========================================================= */
+.label-icons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--li-label-gap);
+  text-align: inherit;
+}
+
+.label-icons__label {
+  margin: 0;
+  font-size: var(--h4-size);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.label-icons__icons {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: var(--li-icon-gap);
+}
+
+.label-icons__icons a {
+  display: inline-flex;
+  line-height: 0;
+}
+
+.label-icons__icons img {
+  width: var(--li-icon-size);
+  height: var(--li-icon-size);
+  display: block;
+}
+
+/* =========================================================
+   HEADER / NAV
+========================================================= */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: transparent;
+}
+
+header .container {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+header nav a {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: var(--h4-size);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.02em;
+  line-height: 0.9;
+  color: var(--color-dark);
+}
+
+header nav a[href="#contact"] {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 8px;
+  border-radius: 999px;
+  background-color: var(--color-dark);
+  color: var(--color-light);
+}
+
+@media (min-width: 834px) {
+  header nav a[href="#contact"] {
+    padding: 8px 18px;
+  }
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+#hero {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  background: var(--color-dark);
+  height: clamp(320px, 52vh, 620px);
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--hero-focus-x) var(--hero-focus-y);
+}
+
+#hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(6, 6, 6, 0.55),
+    rgba(6, 6, 6, 0.55)
+  );
+}
+
+#hero .container {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding-top: clamp(90px, 12vh, 140px);
+  padding-bottom: 0;
+}
+
+.hero-content {
+  position: relative;
+  height: 100%;
+}
+
+.hero-block {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  gap: var(--hero-title-gap);
+  padding-bottom: var(--hero-bottom-pad);
+  padding-right: var(--hero-rail-pad-right);
+}
+
+/* HERO platforms */
+.hero-platforms {
+  --li-label-gap: var(--hero-li-label-gap);
+  --li-icon-gap: var(--hero-li-icon-gap);
+  --li-icon-size: var(--music-icon-size);
+
+  width: max-content;
+  margin-left: auto;
+  text-align: center;
+
+  color: var(--color-light);
+  position: relative;
+  z-index: 3;
+}
+
+.hero-platforms .label-icons__label {
+  color: var(--color-light);
+  font-size: var(--music-label-size);
+}
+
+/* force row, no wrapping */
+.hero-platforms .platform-icons {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--li-icon-gap);
+}
+
+/* HERO title */
+.hero-title {
+  margin: 0;
+  width: 100%;
+  text-align: right;
+
+  line-height: 0.82;
+  letter-spacing: 0.01em;
+  color: var(--color-light);
+
+  transform: translateX(var(--hero-title-right-nudge));
+
+  font-size: clamp(
+    95px,
+    calc(95px + (189 - 95) * ((100vw - 375px) / (834 - 375))),
+    189px
+  );
+}
+
+/* svh support */
+@supports (height: 1svh) {
+  #hero {
+    height: clamp(320px, 52svh, 620px);
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-block {
+    padding-bottom: 0;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 833px) {
+  #hero {
+    height: clamp(360px, 56vh, 660px);
+  }
+  @supports (height: 1svh) {
+    #hero {
+      height: clamp(360px, 56svh, 660px);
+    }
+  }
+  .hero-block {
+    padding-bottom: clamp(0px, 0.6vh, 6px);
+  }
+}
+
+@media (min-width: 834px) {
+  .hero-title {
+    font-size: clamp(
+      189px,
+      calc(189px + (325 - 189) * ((100vw - 834px) / (1440 - 834))),
+      325px
+    );
+  }
+}
+
+@media (min-width: 834px) and (max-width: 1024px) {
+  #hero {
+    height: clamp(540px, 62vh, 780px);
+  }
+  @supports (height: 1svh) {
+    #hero {
+      height: clamp(540px, 62svh, 780px);
+    }
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1239px) {
+  #hero {
+    height: clamp(560px, 44vw, 720px);
+  }
+}
+
+@media (min-width: 1240px) and (max-width: 1439px) {
+  #hero {
+    height: clamp(600px, 46vw, 780px);
+  }
+}
+
+@media (min-width: 1440px) {
+  #hero {
+    height: clamp(640px, 44vw, 860px);
+  }
+}
+
+/* =========================================================
+   MUSIC
+========================================================= */
+.music-featured {
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: rgba(36, 36, 36, 0.08);
+  margin-bottom: 18px;
+}
+
+.music-embed {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  display: block;
+}
+
+.music-list {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 6px;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.music-list::-webkit-scrollbar {
+  display: none;
+}
+
+.music-list > .music-item {
+  flex: 0 0 calc((100% - 14px) / 2);
+  scroll-snap-align: start;
+}
+
+.music-list > .music-item:only-child {
+  flex-basis: 100%;
+}
+
+@media (min-width: 834px) {
+  .music-list > .music-item {
+    flex-basis: calc((100% - (14px * 2)) / 3);
+  }
+}
+
+.music-card-media {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+}
+
+.music-card-media > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.music-card-overlay {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+
+  padding: 12px;
+  background: linear-gradient(to top, rgba(6, 6, 6, 0.75), rgba(6, 6, 6, 0));
+}
+
+.music-card-overlay .label-icons {
+  --li-icon-size: var(--music-icon-size);
+  --li-label-gap: var(--hero-li-label-gap);
+  --li-icon-gap: var(--hero-li-icon-gap);
+  text-align: center;
+}
+
+.music-card-overlay .label-icons__label {
+  color: var(--color-light);
+  font-size: var(--music-label-size);
+}
+
+.music-card-overlay .label-icons__icons {
+  justify-content: center;
+}
+
+@media (min-width: 834px) {
+  .music-card-overlay {
+    padding-bottom: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+@media (min-width: 1027px) {
+  .music-card-overlay {
+    padding-bottom: 22px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+.music-list > .music-item:only-child .music-card-media {
+  aspect-ratio: 16 / 9;
+}
+
+.music-list > .music-item:only-child .music-card-overlay {
+  padding: 16px;
+}
+
+/* =========================================================
+   NEWS
+========================================================= */
+#news h2 {
+  margin-bottom: 0;
+}
+
+@media (min-width: 834px) {
+  #news h2 {
+    margin-bottom: 24px;
+  }
+}
+
+.news-list {
+  display: grid;
+}
+
+.news-item {
+  padding: 20px 0;
+  background: transparent;
+  border-bottom: 0.5px solid var(--color-dark);
+}
+
+.news-date {
+  display: block;
+  margin-bottom: 8px;
+  font-size: var(--h4-size);
+  font-weight: var(--weight-bold);
+}
+
+.news-item h3,
+.news-item p {
+  margin: 0;
+}
+
+.news-description {
+  margin-bottom: 16px;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-item .cta {
+  display: inline-flex;
+  margin-top: 12px;
+  margin-bottom: 4px;
+}
+
+.news-actions {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 834px) {
+  .news-item {
+    display: grid;
+    grid-template-columns: clamp(10ch, 14vw, 12ch) 1fr auto;
+    grid-template-rows: auto auto;
+    column-gap: 56px;
+    row-gap: 8px;
+    align-items: start;
+  }
+
+  .news-date {
+    grid-column: 1;
+    grid-row: 1;
+    white-space: nowrap; 
+    margin: 0;
+    font-size: var(--h3-size);
+    font-weight: var(--weight-bold);
+    line-height: 1;
+    letter-spacing: 0.01em;
+  }
+
+  .news-copy {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+
+  .news-title {
+    font-size: var(--h3-size);
+    font-weight: var(--weight-bold);
+    line-height: 1;
+    margin: 0 0 12px 0;
+  }
+
+  .news-description {
+    margin: 8px 0 0 0;
+    display: block;
+    overflow: visible;
+  }
+
+  .news-item .cta {
+    grid-column: 3;
+    grid-row: 1;
+    margin: 0;
+    justify-self: end;
+    align-self: start;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1239px) {
+  .news-item {
+    padding: 32px 0;
+    row-gap: 18px;
+  }
+
+  .news-description {
+    margin-top: 10px;
+  }
+}
+
+@media (min-width: 1240px) {
+  .news-item {
+    column-gap: 76px;
+    margin-bottom: 20px;
+  }
+}
+
+/* =========================================================
+   ABOUT
+========================================================= */
+#about .container {
+  display: block;
+  container-type: inline-size;
+}
+
+#about h2 {
+  margin-bottom: 0;
+}
+
+#about .display-title {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-size: 28.3cqw;
+}
+
+#about .about-layout {
+  position: relative;
+  z-index: 2;
+  margin-top: 0px;
+}
+
+#about .about-image {
+  position: relative;
+  z-index: 2;
+  margin-top: var(--about-overlap);
+}
+
+#about .about-image img {
+  width: 100%;
+  display: block;
+  border-radius: var(--radius);
+  object-fit: cover;
+}
+
+#about .about-text p {
+  margin: 0;
+  padding-top: 10px;
+}
+
+@media (max-width: 600px) {
+  #about .about-image {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 833px) {
+  #about .about-image {
+    width: 55%;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ===== Tablet + up: use the actual Figma grid columns ===== */
+@media (min-width: 834px) {
+  #about .about-layout {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+    gap: var(--grid-gutter);
+    align-items: start;
+  }
+
+  /* Tablet (5 cols): Text 3 cols (~395px), Image 2 cols (~255px) */
+  #about .about-text {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+  }
+
+  #about .about-image {
+    grid-column: 3 / span 3;
+    grid-row: 1;
+    justify-self: end;
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+}
+
+/* Desktop (12 cols at 1440+): Text 6 cols (588px), Image 6 cols (588px) */
+@media (min-width: 1440px) {
+  #about .about-text {
+    grid-column: 1 / span 6;
+  }
+
+  #about .about-image {
+    grid-column: 7 / span 6;
+  }
+}
+
+/* =========================================================
+   CONTACT
+========================================================= */
+#contact h2 {
+  margin-bottom: 12px;
+}
+
+#contact {
+  padding-bottom: calc(var(--section-pad-y) + 20px);
+}
+
+.contact-form {
+  display: grid;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  font: inherit;
+  font-size: var(--h5-size);
+  text-transform: uppercase;
+
+  line-height: 1;
+  padding: 6px 12px;
+
+  border-radius: 3px;
+  border: 0.5px solid var(--color-dark);
+  background: transparent;
+  color: var(--color-dark);
+}
+
+.contact-form textarea {
+  padding: 12px;
+  min-height: 110px;
+  resize: none;
+}
+
+.contact-form ::placeholder {
+  color: var(--color-dark);
+  letter-spacing: 0.02em;
+}
+
+.contact-form button {
+  justify-self: end;
+  margin-top: 12px;
+}
+
+@media (min-width: 834px) {
+  .contact-form {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 12px;
+    row-gap: 8px;
+  }
+
+  .contact-form input[name="name"] { grid-column: 1; }
+  .contact-form input[name="email"] { grid-column: 2; }
+
+  .contact-form textarea { grid-column: 1 / -1; }
+  .contact-form button { grid-column: 2; justify-self: end; }
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+.site-footer {
+  background-color: var(--color-dark);
+  padding: 8px 0;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-text {
+  font-size: var(--h5-size);
+  font-weight: var(--weight-regular);
+  color: var(--color-light);
+  margin: 0;
+}
+
+/* =========================================================
+   === DESKTOP POLISH PATCH (1240+) ===
+========================================================= */
+@media (min-width: 1240px) {
+  header nav a[href="#contact"] {
+    padding: 10px 18px;
+  }
+
+  .cta--sm {
+    padding: 8px 18px;
+  }
+}
+
+/* =========================================================
+   INTERACTIONS PATCH (JS hooks + hover/focus + nav states)
+========================================================= */
+
+header.is-scrolled {
+  background: var(--color-light);
+}
+
+/* Active dot */
+header nav a.is-active {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+header nav a.is-active::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: currentColor;
+  flex: 0 0 12px;
+  transform: translateY(-1px);
+}
+
+header nav a[href="#contact"].is-active::before {
+  content: none;
+}
+
+/* Nav focus */
+header nav a:focus-visible {
+  outline: 2px solid var(--color-dark);
+  outline-offset: 3px;
+}
+
+/* Contact pill hover invert + outline */
+header nav a[href="#contact"]:hover,
+header nav a[href="#contact"]:focus-visible {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  outline: 1px solid var(--color-dark);
+}
+
+/* CTA hover invert */
+.cta--dark:hover,
+.cta--dark:focus-visible {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+}
+
+.cta--outline:hover,
+.cta--outline:focus-visible {
+  background-color: var(--color-dark);
+  color: var(--color-light);
+}
+
+.cta:focus-visible {
+  outline: 2px solid var(--color-dark);
+  outline-offset: 3px;
+}
+
+/* Platform icons hover */
+.label-icons__icons a {
+  transition: transform 0.12s ease, opacity 0.12s ease;
+  will-change: transform;
+}
+
+.label-icons__icons a:hover,
+.label-icons__icons a:focus-visible {
+  transform: scale(1.12);
+}
+
+/* Music featured hover */
+.music-featured {
+  transition: transform 0.48s ease;
+  will-change: transform;
+}
+
+.music-featured:hover,
+.music-featured:focus-within {
+  transform: scale(1.02);
+}
+
+/* Music card image hover */
+.music-card-media > img {
+  transition: transform 0.1s ease;
+  will-change: transform;
+}
+
+.music-card-media:hover > img,
+.music-card-media:focus-within > img {
+  transform: scale(1.02);
+}
+
+/* Music arrows */
+.music-scroll-controls {
+  position: relative;
+  height: 0;
+  margin-top: 0;
+}
+
+.music-scroll-btn {
+  position: absolute;
+  bottom: -34px;
+  width: 44px;
+  height: 44px;
+
+  border: none;
+  background: transparent;
+  color: var(--color-dark);
+  padding: 0;
+
+  display: grid;
+  place-items: center;
+
+  cursor: pointer;
+  transition: transform 0.12s ease, opacity 0.12s ease;
+}
+
+.music-scroll-btn:hover,
+.music-scroll-btn:focus-visible {
+  opacity: 0.7;
+}
+
+.music-scroll-btn:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.music-scroll-btn--prev { left: var(--music-arrow-inset); }
+.music-scroll-btn--next { right: var(--music-arrow-inset); }
+
+.music-scroll-btn span {
+  font-size: 34px;
+  line-height: 1;
+}
+
+/* About hover zoom — CLEANED (single block, no duplicates) */
+#about .about-image {
+  overflow: hidden;
+  border-radius: var(--radius);
+  transition: transform 0.48s ease;
+  will-change: transform;
+}
+
+#about .about-image:hover,
+#about .about-image:focus-within {
+  transform: scale(1.02);
+}
+
+/* Contact focus ring removed */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Inline error */
+.form-error {
+  margin-top: 6px;
+  font-size: var(--h5-size);
+  font-weight: var(--weight-regular);
+  text-transform: none;
+}
+
+.form-error.is-hidden {
+  display: none;
+}
+
+

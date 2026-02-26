@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zippora</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="js/main.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <nav aria-label="Primary">
+        <a href="#hero">Home</a>
+        <a href="#music">Music</a>
+        <a href="#news">News</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero">
+      <img
+        class="hero-bg"
+        src="assets/images/hero-zipp-image.jpg"
+        alt="Zippora performing live on stage"
+        loading="eager"
+        fetchpriority="high"
+      />
+
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-block">
+            <div class="hero-platforms label-icons">
+              <p class="hero-label ui-label label-icons__label">Available on</p>
+
+              <div class="platform-icons label-icons__icons" aria-label="Streaming platforms">
+                <a href="https://youtube.com/@exampleartist" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                  <img src="assets/icons/youtube.svg" alt="" />
+                </a>
+                <a href="https://open.spotify.com/artist/EXAMPLE" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
+                  <img src="assets/icons/spotify.svg" alt="" />
+                </a>
+                <a href="https://music.apple.com/artist/example" target="_blank" rel="noopener noreferrer" aria-label="Apple Music">
+                  <img src="assets/icons/apple-music.svg" alt="" />
+                </a>
+              </div>
+            </div>
+
+            <h1 class="hero-title">Zippora</h1>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="music">
+      <div class="container">
+        <h2>Music</h2>
+
+        <div class="music-featured">
+          <iframe
+            class="music-embed"
+            src="https://www.youtube.com/embed/Au9F2jGPfeg"
+            title="Featured video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+
+        <div class="music-list">
+          <article class="music-item">
+            <div class="music-card-media">
+              <img src="assets/images/track-1-free.png" alt="Track artwork" loading="lazy" />
+
+              <div class="music-card-overlay">
+                <div class="label-icons">
+                  <p class="ui-label label-icons__label">Stream now</p>
+
+                  <div class="label-icons__icons" aria-label="Music platforms">
+                    <a href="https://example.com/spotify" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
+                      <img src="assets/icons/spotify.svg" alt="" />
+                    </a>
+                    <a href="https://example.com/apple-music" target="_blank" rel="noopener noreferrer" aria-label="Apple Music">
+                      <img src="assets/icons/apple-music.svg" alt="" />
+                    </a>
+                    <a href="https://example.com/youtube" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                      <img src="assets/icons/youtube.svg" alt="" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="music-item">
+            <div class="music-card-media">
+              <img src="assets/images/track-2-placeholder.jpg" alt="Track artwork" loading="lazy" />
+
+              <div class="music-card-overlay">
+                <div class="label-icons">
+                  <p class="ui-label label-icons__label">Stream now</p>
+
+                  <div class="label-icons__icons" aria-label="Music platforms">
+                    <a href="https://example.com/spotify" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
+                      <img src="assets/icons/spotify.svg" alt="" />
+                    </a>
+                    <a href="https://example.com/apple-music" target="_blank" rel="noopener noreferrer" aria-label="Apple Music">
+                      <img src="assets/icons/apple-music.svg" alt="" />
+                    </a>
+                    <a href="https://example.com/youtube" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                      <img src="assets/icons/youtube.svg" alt="" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="music-item">
+            <div class="music-card-media">
+              <img src="assets/images/track-2-placeholder.jpg" alt="Track artwork" loading="lazy" />
+
+              <div class="music-card-overlay">
+                <div class="label-icons">
+                  <p class="ui-label label-icons__label">Stream now</p>
+
+                  <div class="label-icons__icons" aria-label="Music platforms">
+                    <a href="https://example.com/spotify" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
+                      <img src="assets/icons/spotify.svg" alt="" />
+                    </a>
+                    <a href="https://example.com/apple-music" target="_blank" rel="noopener noreferrer" aria-label="Apple Music">
+                      <img src="assets/icons/apple-music.svg" alt="" />
+                    </a>
+                    <a href="https://example.com/youtube" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                      <img src="assets/icons/youtube.svg" alt="" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="news">
+      <div class="container">
+        <h2>News</h2>
+
+        <div class="news-list">
+          <article class="news-item">
+            <time class="news-date ui-label" datetime="2026-07-18"></time>
+            <div class="news-copy">
+              <h3 class="news-title">Indiburn Indigo Scheveningen, The Hague</h3>
+              <p class="news-description">A yearly beach festival night with DJ and performances.</p>
+            </div>
+            <a href="https://beachclubindigo.nl/events-agenda/" target="_blank" rel="noopener noreferrer" class="cta cta--dark cta--sm">Read more</a>
+          </article>
+
+          <article class="news-item">
+            <time class="news-date ui-label" datetime="2026-09-14"></time>
+            <div class="news-copy">
+              <h3 class="news-title">prinsjesnach, The Hague</h3>
+              <p class="news-description">More info coming soon.</p>
+            </div>
+            <a href="https://prinsjesnach.com/" target="_blank" rel="noopener noreferrer" class="cta cta--dark cta--sm">Get tickets</a>
+          </article>
+
+          <article class="news-item">
+            <time class="news-date ui-label" datetime="2026-07-03"></time>
+            <div class="news-copy">
+              <h3 class="news-title">TV show Name</h3>
+              <p class="news-description">Short supporting subtext goes here.</p>
+            </div>
+            <a href="https://example.com/news/tv-show-name" target="_blank" rel="noopener noreferrer" class="cta cta--dark cta--sm">Read more</a>
+          </article>
+        </div>
+        
+        <div class="news-actions">
+          <button type="button" class="cta cta--outline cta--sm" id="newsLoadMore">Load more</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2>About</h2>
+
+        <p class="display-title">Zippora</p>
+
+        <div class="about-layout">
+          <div class="about-image">
+            <img src="assets/images/about-zipp-smile.jpg" alt="Zippora portrait" loading="lazy" />
+          </div>
+
+          <div class="about-text">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2>Get in touch</h2>
+
+        <div class="contact-intro">
+          <p>
+            So excited to hear from you! Leave me a message if you like to collaborate.
+          </p>
+        </div>
+
+        <div class="contact-wrap">
+          <form
+            class="contact-form"
+            id="contactForm"
+            action="mailto:zippora__@live.nl"
+            method="post"
+            enctype="text/plain"
+          >
+            <input type="text" name="name" placeholder="NAME" aria-label="Name" autocomplete="name" />
+            <input type="email" name="email" placeholder="EMAIL" aria-label="Email" autocomplete="email" />
+            <textarea name="message" rows="5" placeholder="MESSAGE" aria-label="Message"></textarea>
+
+            <button type="submit" class="cta cta--dark cta--sm" id="contactSubmit">Open email</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner ui-label">
+      <p class="footer-text">© 2025 Zippora</p>
+      <p class="footer-text">All Rights Reserved</p>
+    </div>
+  </footer>
+</body>
+</html>
