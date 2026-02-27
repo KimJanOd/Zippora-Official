@@ -1,0 +1,39 @@
+{
+  "hero": {
+    "platforms": {
+      "youtube": "https://youtube.com/@exampleartist",
+      "spotify": "https://open.spotify.com/artist/EXAMPLE",
+      "appleMusic": "https://music.apple.com/artist/example"
+    }
+  },
+  "music": {
+    "featuredVideoEmbedUrl": "https://www.youtube.com/embed/Au9F2jGPfeg",
+    "cards": [
+      {
+        "coverImage": "assets/images/track-1-placeholder.jpg",
+        "spotify": "https://example.com/spotify",
+        "appleMusic": "https://example.com/apple-music",
+        "youtube": "https://example.com/youtube"
+      },
+      {
+        "coverImage": "assets/images/track-1-placeholder.jpg",
+        "spotify": "https://example.com/spotify",
+        "appleMusic": "https://example.com/apple-music",
+        "youtube": "https://example.com/youtube"
+      },
+      {
+        "coverImage": "assets/images/track-1-placeholder.jpg",
+        "spotify": "https://example.com/spotify",
+        "appleMusic": "https://example.com/apple-music",
+        "youtube": "https://example.com/youtube"
+      }
+    ]
+  },
+  "about": {
+    "image": "assets/images/about-zippora.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+  },
+  "contact": {
+    "emailTo": "zippora__@live.nl"
+  }
+}
