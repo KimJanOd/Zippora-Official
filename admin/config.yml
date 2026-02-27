@@ -1,0 +1,58 @@
+backend:
+  name: github
+  repo: KimJanOd/Zippora-Official
+  branch: master
+
+media_folder: "assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+publish_mode: simple
+
+collections:
+  - name: "site"
+    label: "Site content"
+    files:
+      - name: "siteJson"
+        label: "Website Content"
+        file: "content/site.json"
+        format: "json"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - label: "Platforms"
+                name: "platforms"
+                widget: "object"
+                fields:
+                  - { label: "YouTube link", name: "youtube", widget: "string" }
+                  - { label: "Spotify link", name: "spotify", widget: "string" }
+                  - { label: "Apple Music link", name: "appleMusic", widget: "string" }
+
+          - label: "Music"
+            name: "music"
+            widget: "object"
+            fields:
+              - { label: "Featured video embed URL", name: "featuredVideoEmbedUrl", widget: "string" }
+              - label: "Music cards"
+                name: "cards"
+                widget: "list"
+                fields:
+                  - { label: "Cover image", name: "coverImage", widget: "image" }
+                  - { label: "Stream now label", name: "streamLabel", widget: "string", default: "Stream now" }
+                  - { label: "Spotify link", name: "spotify", widget: "string" }
+                  - { label: "Apple Music link", name: "appleMusic", widget: "string" }
+                  - { label: "YouTube link", name: "youtube", widget: "string" }
+
+          - label: "About"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "About image", name: "image", widget: "image" }
+              - { label: "About text", name: "text", widget: "markdown" }
+
+          - label: "Contact"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Contact email", name: "emailTo", widget: "string" }
