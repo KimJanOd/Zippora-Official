@@ -31,9 +31,9 @@
   },
   "about": {
     "image": "assets/images/about-zippora.jpg",
-    "text": "Polly ipsum dolor sit amet, consectetur adipiscing elit..."
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
   },
   "contact": {
-    "emailTo": "zippora__@live.nl"
+    "emailTo": "mail@kimjanmahomed.com"
   }
 }
