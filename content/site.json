@@ -33,10 +33,10 @@
     ]
   },
   "about": {
-    "image": "assets/images/about-zippora.jpg",
+    "image": "/assets/images/uploads/about-zipp-smile.jpg",
     "text": "TESTLorem ipsum dolor sit amet, consectetur adipiscing elit..."
   },
   "contact": {
-    "emailTo": "zippora__@live.nl"
+    "emailTo": "mail@kimjanmahomed.com"
   }
 }
