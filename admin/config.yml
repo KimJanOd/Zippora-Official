@@ -1,5 +1,3 @@
-Zippora-Official / admin / config.yml
-
 backend:
   name: git-gateway
   branch: master
