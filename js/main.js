@@ -325,3 +325,31 @@ function clearNavAtPageEnd() {
 
   document.addEventListener("DOMContentLoaded", init);
 })();
+
+// ==============================
+// LOAD EDITABLE SITE CONTENT
+// ==============================
+
+async function loadSiteContent() {
+  try {
+    const response = await fetch("/content/site.json");
+    const data = await response.json();
+
+    // Contact email
+    const contactLink = document.querySelector('a[href^="mailto:"]');
+    if (contactLink && data.contact?.emailTo) {
+      contactLink.href = `mailto:${data.contact.emailTo}`;
+    }
+
+    // Featured video
+    const videoIframe = document.querySelector("iframe");
+    if (videoIframe && data.music?.featuredVideoEmbedUrl) {
+      videoIframe.src = data.music.featuredVideoEmbedUrl;
+    }
+
+  } catch (error) {
+    console.error("Error loading site content:", error);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadSiteContent);
