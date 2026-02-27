@@ -1,5 +1,6 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: KimJanOd/Zippora-Official
   branch: master
 
 media_folder: "assets/images/uploads"
