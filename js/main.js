@@ -8,6 +8,8 @@
   const navLinks = nav ? Array.from(nav.querySelectorAll('a[href^="#"]')) : [];
   const sections = Array.from(document.querySelectorAll("main section[id]"));
 
+  let SITE_CONTENT = null;
+
   // ---------- Helpers ----------
   function setHeaderOffsetVar() {
     if (!header) return;
@@ -286,7 +288,7 @@ function formatNewsDates() {
       if (!isValidEmail(email)) return showError("Please enter a valid email.");
       if (!message) return showError("Please enter a message.");
 
-      const to = "zippora__@live.nl";
+      const to = form.dataset.emailTo || "zippora__@live.nl";
       const subject = encodeURIComponent(`Website message from ${name}`);
       const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
 
@@ -304,12 +306,60 @@ function clearNavAtPageEnd() {
     setActiveNavById("contact"); // clears dot for contact
   }
 }
+  // ==============================
+  // LOAD EDITABLE SITE CONTENT
+  // ==============================
+  async function loadSiteContent() {
+    try {
+      const response = await fetch("/content/site.json", { cache: "no-store" });
+      SITE_CONTENT = await response.json();
+
+      const contactEmail = SITE_CONTENT?.contact?.emailTo;
+
+      // 1) Update any mailto link on the page (contact section)
+      const mailtoLink = document.querySelector('a[href^="mailto:"]');
+      if (mailtoLink && contactEmail) {
+        mailtoLink.setAttribute("href", `mailto:${contactEmail}`);
+      }
+
+      // 2) Store email on the form so the submit handler can use it
+      const form = document.querySelector("#contactForm");
+      if (form && contactEmail) {
+        form.dataset.emailTo = contactEmail;
+        // optional nice-to-have:
+        form.setAttribute("action", `mailto:${contactEmail}`);
+      }
+
+      // 3) Update About section (image + text)
+      const aboutSection = document.querySelector("#about");
+      if (aboutSection && SITE_CONTENT?.about) {
+        const aboutImg = aboutSection.querySelector("img");
+        if (aboutImg && SITE_CONTENT.about.image) {
+          aboutImg.src = SITE_CONTENT.about.image;
+        }
+
+        const aboutTextEl =
+          aboutSection.querySelector("[data-about-text]") ||
+          aboutSection.querySelector(".about-text") ||
+          aboutSection.querySelector(".about-copy") ||
+          aboutSection.querySelector("p");
+
+        if (aboutTextEl && SITE_CONTENT.about.text) {
+          aboutTextEl.textContent = SITE_CONTENT.about.text;
+        }
+      }
+    } catch (error) {
+      console.error("Error loading site content:", error);
+    }
+  }
 
   // ---------- Init ----------
-  function init() {
+  async function init() {
     setHeaderOffsetVar();
     setHeaderScrolledClass();
     clearNavAtPageEnd();
+
+    await loadSiteContent();
 
     window.addEventListener("scroll", setHeaderScrolledClass, { passive: true });
     window.addEventListener("resize", setHeaderOffsetVar);
@@ -326,30 +376,3 @@ function clearNavAtPageEnd() {
   document.addEventListener("DOMContentLoaded", init);
 })();
 
-// ==============================
-// LOAD EDITABLE SITE CONTENT
-// ==============================
-
-async function loadSiteContent() {
-  try {
-    const response = await fetch("/content/site.json");
-    const data = await response.json();
-
-    // Contact email
-    const contactLink = document.querySelector('a[href^="mailto:"]');
-    if (contactLink && data.contact?.emailTo) {
-      contactLink.href = `mailto:${data.contact.emailTo}`;
-    }
-
-    // Featured video
-    const videoIframe = document.querySelector("iframe");
-    if (videoIframe && data.music?.featuredVideoEmbedUrl) {
-      videoIframe.src = data.music.featuredVideoEmbedUrl;
-    }
-
-  } catch (error) {
-    console.error("Error loading site content:", error);
-  }
-}
-
-document.addEventListener("DOMContentLoaded", loadSiteContent);
