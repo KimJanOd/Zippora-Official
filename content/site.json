@@ -13,25 +13,28 @@
         "coverImage": "assets/images/track-1-placeholder.jpg",
         "spotify": "https://example.com/spotify",
         "appleMusic": "https://example.com/apple-music",
-        "youtube": "https://example.com/youtube"
+        "youtube": "https://example.com/youtube",
+        "streamLabel": "Stream Now"
       },
       {
         "coverImage": "assets/images/track-1-placeholder.jpg",
         "spotify": "https://example.com/spotify",
         "appleMusic": "https://example.com/apple-music",
-        "youtube": "https://example.com/youtube"
+        "youtube": "https://example.com/youtube",
+        "streamLabel": "Stream now"
       },
       {
         "coverImage": "assets/images/track-1-placeholder.jpg",
         "spotify": "https://example.com/spotify",
         "appleMusic": "https://example.com/apple-music",
-        "youtube": "https://example.com/youtube"
+        "youtube": "https://example.com/youtube",
+        "streamLabel": "Stream Now"
       }
     ]
   },
   "about": {
     "image": "assets/images/about-zippora.jpg",
-    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+    "text": "TESTLorem ipsum dolor sit amet, consectetur adipiscing elit..."
   },
   "contact": {
     "emailTo": "mail@kimjanmahomed.com"
