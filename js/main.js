@@ -314,6 +314,13 @@ function clearNavAtPageEnd() {
       const response = await fetch("/content/site.json", { cache: "no-store" });
       SITE_CONTENT = await response.json();
 
+  // 0) Update featured music video embed
+      const iframe = document.querySelector("#music iframe");
+      const embedUrl = SITE_CONTENT?.music?.featuredVideoEmbedUrl;
+      if (iframe && embedUrl) {
+        iframe.src = embedUrl;
+      }    
+
       const contactEmail = SITE_CONTENT?.contact?.emailTo;
 
       // 1) Update any mailto link on the page (contact section)
