@@ -38,5 +38,30 @@
   },
   "contact": {
     "emailTo": "Zippora__@live.nl"
+  },
+  "news": {
+    "items": [
+      {
+        "title": "Zippora Performing @ Stadsklooster, Utrecht",
+        "description": "Acoustic music session",
+        "date": "2026-03-20",
+        "linkUrl": "https://stadskloosterutrecht.nl/event/open-podium-maart",
+        "buttonText": "More info"
+      },
+      {
+        "title": "prinsjesnach, The Hague",
+        "date": "2026-09-14",
+        "description": "More info coming soon.",
+        "linkUrl": "https://prinsjesnach.com/",
+        "buttonText": "read more"
+      },
+      {
+        "title": "Indiburn Indigo Scheveningen, The Hague",
+        "date": "2026-02-19",
+        "description": "A yearly beach festival night with DJ and performances.",
+        "linkUrl": "https://beachclubindigo.nl/events-agenda/",
+        "buttonText": "Read more"
+      }
+    ]
   }
 }
