@@ -168,6 +168,101 @@
     window.addEventListener("resize", buildControls);
   }
 
+  // ---------- News: Render from CMS (Upcoming first, fill to min 3) ----------
+  function renderNewsFromCMS() {
+    const newsSection = document.querySelector("#news");
+    if (!newsSection) return;
+
+    const list = newsSection.querySelector(".news-list");
+    if (!list) return;
+
+    const items = SITE_CONTENT?.news?.items;
+    if (!Array.isArray(items) || !items.length) return;
+
+    // Parse YYYY-MM-DD as date-only (avoid timezone surprises)
+    const parseISODateOnly = (iso) => {
+      const [y, m, d] = String(iso || "").split("-").map(Number);
+      if (!y || !m || !d) return null;
+      return new Date(Date.UTC(y, m - 1, d));
+    };
+
+    // "Today" as date-only in UTC to match our parsing
+    const now = new Date();
+    const todayUTC = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+
+    const normalized = items
+      .map((it) => {
+        const dt = parseISODateOnly(it.date);
+        return { ...it, _dt: dt };
+      })
+      .filter((it) => it._dt); // keep only valid dates
+
+    // Split into upcoming vs past (today counts as upcoming)
+    const upcoming = normalized.filter((it) => it._dt >= todayUTC);
+    const past = normalized.filter((it) => it._dt < todayUTC);
+
+    // Sort upcoming: soonest first
+    upcoming.sort((a, b) => a._dt - b._dt);
+
+    // Sort past: most recent past first
+    past.sort((a, b) => b._dt - a._dt);
+
+       // Build the render list:
+    // - show ALL upcoming (soonest first)
+    // - if fewer than 3 upcoming, fill with most recent past until total is 3
+    let renderItems = [...upcoming];
+
+    if (renderItems.length < 3) {
+      const needed = 3 - renderItems.length;
+      renderItems = renderItems.concat(past.slice(0, needed));
+    }
+
+    // If there are still 0 items (edge case), show up to 3 past items
+    if (!renderItems.length) {
+      renderItems = past.slice(0, 3);
+    }
+
+    // Clear existing hardcoded HTML items
+    list.innerHTML = "";
+
+    // Render using your existing markup structure
+    renderItems.forEach((it) => {
+      const article = document.createElement("article");
+      article.className = "news-item";
+
+      const time = document.createElement("time");
+      time.className = "news-date ui-label";
+      time.setAttribute("datetime", it.date);
+
+      const copy = document.createElement("div");
+      copy.className = "news-copy";
+
+      const h3 = document.createElement("h3");
+      h3.className = "news-title";
+      h3.textContent = it.title;
+
+      const p = document.createElement("p");
+      p.className = "news-description";
+      p.textContent = it.description;
+
+      copy.appendChild(h3);
+      copy.appendChild(p);
+
+      const a = document.createElement("a");
+      a.className = "cta cta--dark cta--sm";
+      a.href = it.linkUrl;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.textContent = it.buttonText;
+
+      article.appendChild(time);
+      article.appendChild(copy);
+      article.appendChild(a);
+
+      list.appendChild(article);
+    });
+  }
+
   // ---------- News: "day and date" ----------
 
 function formatNewsDates() {
@@ -314,7 +409,9 @@ function clearNavAtPageEnd() {
       const response = await fetch("/content/site.json", { cache: "no-store" });
       SITE_CONTENT = await response.json();
 
-  // 0) Update featured music video embed
+      renderNewsFromCMS();
+
+      // 0) Update featured music video embed
       const iframe = document.querySelector("#music iframe");
       const embedUrl = SITE_CONTENT?.music?.featuredVideoEmbedUrl;
       if (iframe && embedUrl) {
