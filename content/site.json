@@ -61,6 +61,13 @@
         "description": "A yearly beach festival night with DJ and performances.",
         "linkUrl": "https://beachclubindigo.nl/events-agenda/",
         "buttonText": "Read more"
+      },
+      {
+        "date": "2026-10-30",
+        "title": "placeholder",
+        "description": "placeholder",
+        "linkUrl": "placeholder",
+        "buttonText": "read more"
       }
     ]
   }
