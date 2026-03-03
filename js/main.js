@@ -179,12 +179,18 @@
     const items = SITE_CONTENT?.news?.items;
     if (!Array.isArray(items) || !items.length) return;
 
-    // Parse YYYY-MM-DD as date-only (avoid timezone surprises)
-    const parseISODateOnly = (iso) => {
-      const [y, m, d] = String(iso || "").split("-").map(Number);
-      if (!y || !m || !d) return null;
-      return new Date(Date.UTC(y, m - 1, d));
-    };
+  // Parse YYYY-MM-DD as date-only (avoid timezone surprises)
+  const parseISODateOnly = (iso) => {
+    const s = String(iso || "").trim();
+    if (!s) return null;
+
+    // Accept "YYYY-MM-DD" or "YYYY-MM-DDTHH:MM:SSZ..."
+    const datePart = s.split("T")[0];
+    const [y, m, d] = datePart.split("-").map(Number);
+
+    if (!y || !m || !d) return null;
+    return new Date(Date.UTC(y, m - 1, d));
+  };
 
     // "Today" as date-only in UTC to match our parsing
     const now = new Date();
