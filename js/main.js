@@ -99,7 +99,115 @@
     sections.forEach((section) => observer.observe(section));
   }
 
+  // ---------- Music: Render from CMS ----------
+  function renderMusicFromCMS() {
+    const musicSection = document.querySelector("#music");
+    if (!musicSection) return;
 
+    const featuredWrap = musicSection.querySelector(".music-featured");
+    const iframe = musicSection.querySelector("iframe.music-embed");
+
+    const cards = SITE_CONTENT?.music?.cards;
+    const list = musicSection.querySelector(".music-list");
+    if (!list) return;
+
+    // --- Featured: allow empty (A) ---
+    const embedUrl = (SITE_CONTENT?.music?.featuredVideoEmbedUrl || "").trim();
+
+    if (iframe && featuredWrap) {
+      if (embedUrl) {
+        featuredWrap.style.display = "";
+        iframe.src = embedUrl;
+      } else {
+        // hide + clear src so old video doesn't "stick"
+        iframe.src = "";
+        featuredWrap.style.display = "none";
+      }
+    }
+
+    // --- Cards ---
+    if (!Array.isArray(cards)) return;
+
+    // Reset list and rebuild from CMS
+    list.innerHTML = "";
+
+    cards.forEach((card) => {
+      const article = document.createElement("article");
+      article.className = "music-item";
+
+      const media = document.createElement("div");
+      media.className = "music-card-media";
+
+      const img = document.createElement("img");
+      img.src = card.coverImage || "";
+      img.alt = "Track artwork";
+      img.loading = "lazy";
+
+      const overlay = document.createElement("div");
+      overlay.className = "music-card-overlay";
+
+      const labelIcons = document.createElement("div");
+      labelIcons.className = "label-icons";
+
+      // Locked label (not editable)
+      const label = document.createElement("p");
+      label.className = "ui-label label-icons__label";
+      label.textContent = "Stream now";
+
+      const icons = document.createElement("div");
+      icons.className = "label-icons__icons";
+      icons.setAttribute("aria-label", "Music platforms");
+
+      // Helper to create icon links
+      const makeIconLink = (href, ariaLabel, iconSrc) => {
+        const a = document.createElement("a");
+        a.href = href || "#";
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.setAttribute("aria-label", ariaLabel);
+
+        const icon = document.createElement("img");
+        icon.src = iconSrc;
+        icon.alt = "";
+
+        a.appendChild(icon);
+        return a;
+      };
+
+      // Always render the icons in the same order (you can decide later if you want to hide missing ones)
+      icons.appendChild(
+        makeIconLink(card.spotify, "Spotify", "assets/icons/spotify.svg")
+      );
+      icons.appendChild(
+        makeIconLink(card.appleMusic, "Apple Music", "assets/icons/apple-music.svg")
+      );
+      icons.appendChild(
+        makeIconLink(card.youtube, "YouTube", "assets/icons/youtube.svg")
+      );
+
+      labelIcons.appendChild(label);
+      labelIcons.appendChild(icons);
+
+      overlay.appendChild(labelIcons);
+
+      media.appendChild(img);
+      media.appendChild(overlay);
+
+      article.appendChild(media);
+
+      list.appendChild(article);
+    });
+
+    // --- Layout rule: no featured + exactly 1 card => card becomes "featured style" ---
+    // We only set a class; CSS will handle size/shape.
+    const hasFeatured = !!embedUrl;
+    const cardCount = cards.length;
+
+    musicSection.classList.toggle(
+      "music--single-feature",
+      !hasFeatured && cardCount === 1
+    );
+  }
 
   // ---------- Music horizontal scroll arrows ----------
   function setupMusicScrollControls() {
@@ -427,13 +535,7 @@ function clearNavAtPageEnd() {
       SITE_CONTENT = await response.json();
 
       renderNewsFromCMS();
-
-      // 0) Update featured music video embed
-      const iframe = document.querySelector("#music iframe");
-      const embedUrl = SITE_CONTENT?.music?.featuredVideoEmbedUrl;
-      if (iframe && embedUrl) {
-        iframe.src = embedUrl;
-      }    
+      renderMusicFromCMS(); 
 
       const contactEmail = SITE_CONTENT?.contact?.emailTo;
 
