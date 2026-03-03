@@ -14,7 +14,8 @@
         "spotify": "https://example.com/spotify",
         "appleMusic": "https://example.com/apple-music",
         "youtube": "https://example.com/youtube",
-        "streamLabel": "Stream Now"
+        "streamLabel": "Stream Now",
+        "statusLabel": "Coming soon"
       }
     ]
   },
