@@ -34,9 +34,11 @@ collections:
             widget: "object"
             fields:
               - { label: "Featured video embed URL", name: "featuredVideoEmbedUrl", widget: "string" }
-              - label: "Music cards"
-                name: "cards"
-                widget: "list"
+              - label: "Featured video embed URL"
+                name: "featuredVideoEmbedUrl"
+                widget: "string"
+                required: false
+                hint: "Optional. Leave empty to hide the featured video."
                 fields:
                   - { label: "Cover image", name: "coverImage", widget: "image" }
                   - { label: "Spotify link", name: "spotify", widget: "string" }
