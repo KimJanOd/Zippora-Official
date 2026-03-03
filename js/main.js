@@ -213,23 +213,34 @@
     // Sort past: most recent past first
     past.sort((a, b) => b._dt - a._dt);
 
-    // Build the full render list:
-    // 1) Upcoming first (soonest first)
-    // 2) Then past (most recent past first)
-    // This ensures:
-    // - Upcoming always appear first
-    // - If fewer than 3 upcoming, past items naturally appear in the first 3
-    // - All items are rendered so Load More works
+    // Build the render list:
+    // - show ALL upcoming (soonest first)
+    // - if fewer than 3 upcoming, fill with most recent past until total is 3
+    let renderItems = [...upcoming]; // these items include _dt
 
-    const renderItems = [...upcoming, ...past];
+    if (renderItems.length < 3) {
+      const needed = 3 - renderItems.length;
+      renderItems = renderItems.concat(past.slice(0, needed)); // past items include _dt
+    }
+
+    // If there are still 0 items (edge case), show up to 3 past items
+    if (!renderItems.length) {
+      renderItems = past.slice(0, 3); // past items include _dt
+    }
 
     // Clear existing hardcoded HTML items
     list.innerHTML = "";
 
     // Render using your existing markup structure
+    console.log("renderItems[0]", renderItems[0]);
+
     renderItems.forEach((it) => {
       const article = document.createElement("article");
       article.className = "news-item";
+
+      if (it._dt && it._dt < todayUTC) {
+      article.classList.add("is-past");
+    }
 
     // Add class for past events
      if (it._dt < todayUTC) {
