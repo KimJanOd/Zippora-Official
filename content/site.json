@@ -10,21 +10,7 @@
     "featuredVideoEmbedUrl": "https://www.youtube.com/embed/y3M1FIGz9Jo",
     "cards": [
       {
-        "coverImage": "assets/images/track-1-placeholder.jpg",
-        "spotify": "https://example.com/spotify",
-        "appleMusic": "https://example.com/apple-music",
-        "youtube": "https://example.com/youtube",
-        "streamLabel": "Stream Now"
-      },
-      {
-        "coverImage": "assets/images/track-1-placeholder.jpg",
-        "spotify": "https://example.com/spotify",
-        "appleMusic": "https://example.com/apple-music",
-        "youtube": "https://example.com/youtube",
-        "streamLabel": "Stream now"
-      },
-      {
-        "coverImage": "assets/images/track-1-placeholder.jpg",
+        "coverImage": "/assets/images/uploads/zippora-single-cover-final-6.png",
         "spotify": "https://example.com/spotify",
         "appleMusic": "https://example.com/apple-music",
         "youtube": "https://example.com/youtube",
