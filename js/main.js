@@ -152,23 +152,30 @@
       // Locked label (not editable)
       const label = document.createElement("p");
       label.className = "ui-label label-icons__label";
-      label.textContent = "Stream now";
+      label.textContent = card.statusLabel || "Stream now";
 
       const icons = document.createElement("div");
       icons.className = "label-icons__icons";
       icons.setAttribute("aria-label", "Music platforms");
 
+      const isComingSoon = card.statusLabel === "Coming soon";
+
       // Helper to create icon links
       const makeIconLink = (href, ariaLabel, iconSrc) => {
         const a = document.createElement("a");
-        a.href = href || "#";
-        a.target = "_blank";
-        a.rel = "noopener noreferrer";
         a.setAttribute("aria-label", ariaLabel);
 
         const icon = document.createElement("img");
         icon.src = iconSrc;
         icon.alt = "";
+
+        if (!isComingSoon && href) {
+          a.href = href;
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+        } else {
+          a.classList.add("is-disabled");
+        }
 
         a.appendChild(icon);
         return a;

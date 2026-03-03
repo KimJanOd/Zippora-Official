@@ -713,6 +713,16 @@ header nav a[href="#contact"] {
   flex-basis: 100%;
 }
 
+.music-item .label-icons__icons a.is-disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: default;
+}
+
+.music-item .label-icons__icons a.is-disabled:hover {
+  transform: none;
+}
+
 @media (min-width: 834px) {
   .music-list > .music-item {
     flex-basis: calc((100% - (14px * 2)) / 3);

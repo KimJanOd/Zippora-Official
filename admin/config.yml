@@ -44,9 +44,16 @@ collections:
                 widget: "list"
                 fields:
                   - { label: "Cover image", name: "coverImage", widget: "image" }
+
+                  - label: "Status label"
+                    name: "statusLabel"
+                    widget: "select"
+                    options: ["Stream now", "Coming soon"]
+                    default: "Stream now"
+
                   - { label: "Spotify link", name: "spotify", widget: "string" }
                   - { label: "Apple Music link", name: "appleMusic", widget: "string" }
-                  - { label: "YouTube link", name: "youtube", widget: "string" }
+                  - { label: "YouTube link", name: "youtube", widget: "string" }               
      
           - label: "News"
             name: "news"
