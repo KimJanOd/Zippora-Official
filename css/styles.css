@@ -792,6 +792,18 @@ header nav a[href="#contact"] {
   margin-bottom: 0;
 }
 
+/* Past news items */
+.news-item.is-past .news-date,
+.news-item.is-past .news-copy,
+.news-item.is-past .cta {
+  opacity: 0.5;
+}
+
+/* Disable hover animation for past items */
+.news-item.is-past .cta:hover {
+  transform: none !important;
+}
+
 @media (min-width: 834px) {
   #news h2 {
     margin-bottom: 24px;

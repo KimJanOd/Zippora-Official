@@ -225,6 +225,11 @@
       const article = document.createElement("article");
       article.className = "news-item";
 
+    // Add class for past events
+     if (it._dt < todayUTC) {
+      article.classList.add("is-past");
+      }
+
       const time = document.createElement("time");
       time.className = "news-date ui-label";
       time.setAttribute("datetime", it.date);
