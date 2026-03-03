@@ -715,7 +715,6 @@ header nav a[href="#contact"] {
 
 .music-item .label-icons__icons a.is-disabled {
   pointer-events: none;
-  opacity: 0.5;
   cursor: default;
 }
 
@@ -793,6 +792,24 @@ header nav a[href="#contact"] {
 
 .music-list > .music-item:only-child .music-card-overlay {
   padding: 16px;
+}
+
+/* Larger label + icons when single card replaces featured */
+#music.music--single-feature .label-icons__label {
+  font-size: 1.25rem; /* adjust to taste */
+}
+
+#music.music--single-feature .label-icons__icons img {
+  width: 28px; /* increase from default */
+  height: auto;
+}
+
+#music.music--single-feature .music-card-overlay {
+  padding: 24px;
+}
+
+#music.music--single-feature .label-icons__icons {
+  gap: 8px;
 }
 
 /* =========================================================
