@@ -1,7 +1,7 @@
 {
   "hero": {
     "bgImage": "/assets/images/uploads/zipp-hero-image2-copy.jpg",
-    "platformsEnabled": false,
+    "platformsEnabled": true,
     "platforms": {
       "youtube": "https://youtube.com/@exampleartist",
       "spotify": "https://open.spotify.com/artist/EXAMPLE",
