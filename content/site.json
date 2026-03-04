@@ -3,9 +3,9 @@
     "bgImage": "/assets/images/uploads/zipp-hero-image2-copy.jpg",
     "platformsEnabled": true,
     "platforms": {
-      "youtube": "",
-      "spotify": "",
-      "appleMusic": ""
+      "youtube": "https://youtube.com/@exampleartist",
+      "spotify": "https://open.spotify.com/artist/EXAMPLE",
+      "appleMusic": "https://music.apple.com/artist/example"
     },
     "platformsClickable": false
   },
