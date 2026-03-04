@@ -53,5 +53,6 @@
       }
     ]
   },
-  "platformsEnabled": true
+  "platformsEnabled": true,
+  "platformsClickable": true
 }
