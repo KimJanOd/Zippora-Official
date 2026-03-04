@@ -23,16 +23,34 @@ collections:
             fields:
               - { label: "Hero background image", name: "bgImage", widget: "image" }
 
-              - { label: "Show platform icons", name: "platformsEnabled", widget: "boolean", default: true }
-             
-              - label: "Platforms"
+              # This is the ONLY toggle you need:
+              - { label: "Platform icons are clickable", name: "platformsClickable", widget: "boolean", default: true }
+
+              # When clickable = ON → required links
+              - label: "Platforms (clickable)"
                 name: "platforms"
                 widget: "object"
                 collapsed: true
                 fields:
-                  - { label: "YouTube link", name: "youtube", widget: "url", required: false }
-                  - { label: "Spotify link", name: "spotify", widget: "url", required: false }
-                  - { label: "Apple Music link", name: "appleMusic", widget: "url", required: false }       
+                  - { label: "YouTube link", name: "youtube", widget: "string" }
+                  - { label: "Spotify link", name: "spotify", widget: "string" }
+                  - { label: "Apple Music link", name: "appleMusic", widget: "string" }
+                condition:
+                  field: "platformsClickable"
+                  value: true
+
+              # When clickable = OFF → optional links (hidden if you want)
+              - label: "Platforms (not clickable)"
+                name: "platformsDisabled"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "YouTube link (optional)", name: "youtube", widget: "string", required: false }
+                  - { label: "Spotify link (optional)", name: "spotify", widget: "string", required: false }
+                  - { label: "Apple Music link (optional)", name: "appleMusic", widget: "string", required: false }
+                condition:
+                  field: "platformsClickable"
+                  value: false       
 
           - label: "Show platform icons"
             name: "platformsEnabled"
