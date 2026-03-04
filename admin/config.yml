@@ -27,7 +27,7 @@ collections:
                 name: "platformsClickable"
                 widget: "boolean"
                 default: true
-                hint: "Turn OFF to make icons not clickable (and no hover)."
+                hint: "Turn OFF to make icons not clickable >> No links needed. Turn ON, add Platform links."
 
               - label: "Platforms"
                 name: "platforms"
