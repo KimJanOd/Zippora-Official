@@ -7,7 +7,7 @@
       "spotify": "https://open.spotify.com/artist/EXAMPLE",
       "appleMusic": "https://music.apple.com/artist/example"
     },
-    "platformsClickable": false
+    "platformsClickable": true
   },
   "music": {
     "featuredVideoEmbedUrl": "",
