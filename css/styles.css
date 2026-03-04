@@ -586,9 +586,15 @@ header nav a[href="#contact"] {
   gap: var(--li-icon-gap);
 }
 
-.hero-platforms a.is-disabled {
+/* HERO platform icons disabled */
+.platform-icons a.is-disabled {
   pointer-events: none;
   cursor: default;
+}
+
+/* If you have hover animations on icons, disable them */
+.platform-icons a.is-disabled:hover {
+  transform: none;
 }
 
 /* HERO title */

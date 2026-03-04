@@ -112,41 +112,33 @@
       heroImg.src = bgSrc;
     }
 
-    // 2) Platform icons on/off + links
-    const enabled = SITE_CONTENT?.hero?.platformsEnabled !== false; // default ON
-    const platformsWrap = heroSection.querySelector(".hero-platforms");
+    // --- HERO PLATFORM ICONS (always visible, optionally clickable) ---
+    const clickable = SITE_CONTENT?.hero?.platformsClickable !== false; // default true
     const links = SITE_CONTENT?.hero?.platforms || {};
 
-    if (!platformsWrap) return;
+    const iconLinks = heroSection.querySelectorAll(".platform-icons a");
+    if (iconLinks.length) {
+      iconLinks.forEach((a) => {
+        const label = (a.getAttribute("aria-label") || "").toLowerCase();
 
-    if (!enabled) {
-      platformsWrap.style.display = "none";
-      return;
+    let url = "";
+    if (label.includes("youtube")) url = links.youtube || "";
+    if (label.includes("spotify")) url = links.spotify || "";
+    if (label.includes("apple")) url = links.appleMusic || "";
+
+    if (clickable && url) {
+      a.classList.remove("is-disabled");
+      a.setAttribute("href", url);
+      a.setAttribute("target", "_blank");
+      a.setAttribute("rel", "noopener noreferrer");
+    } else {
+      a.classList.add("is-disabled");
+      a.removeAttribute("href");
+      a.removeAttribute("target");
+      a.removeAttribute("rel");
     }
-
-    platformsWrap.style.display = "";
-
-    const setLink = (ariaLabel, href) => {
-      const a = platformsWrap.querySelector(`a[aria-label="${ariaLabel}"]`);
-      if (!a) return;
-
-      if (href) {
-        a.href = href;
-        a.classList.remove("is-disabled");
-        a.setAttribute("tabindex", "0");
-      } else {
-        // If enabled but missing link, disable that icon (idiot proof)
-        a.removeAttribute("href");
-        a.classList.add("is-disabled");
-        a.setAttribute("tabindex", "-1");
-      }
-    };
-
-    setLink("YouTube", links.youtube);
-    setLink("Spotify", links.spotify);
-    setLink("Apple Music", links.appleMusic);
-  }
-
+  });
+}
   // ---------- Music: Render from CMS ----------
   function renderMusicFromCMS() {
     const musicSection = document.querySelector("#music");
@@ -631,6 +623,7 @@ function clearNavAtPageEnd() {
       console.error("Error loading site content:", error);
     }
   }
+}
 
   // ---------- Init ----------
   async function init() {
