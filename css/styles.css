@@ -586,6 +586,11 @@ header nav a[href="#contact"] {
   gap: var(--li-icon-gap);
 }
 
+.hero-platforms a.is-disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
 /* HERO title */
 .hero-title {
   margin: 0;

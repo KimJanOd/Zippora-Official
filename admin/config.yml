@@ -21,13 +21,24 @@ collections:
             name: "hero"
             widget: "object"
             fields:
+              - { label: "Hero background image", name: "bgImage", widget: "image" }
+
+              - { label: "Show platform icons", name: "platformsEnabled", widget: "boolean", default: true }
+             
               - label: "Platforms"
                 name: "platforms"
                 widget: "object"
+                collapsed: true
                 fields:
-                  - { label: "YouTube link", name: "youtube", widget: "string" }
-                  - { label: "Spotify link", name: "spotify", widget: "string" }
-                  - { label: "Apple Music link", name: "appleMusic", widget: "string" }
+                  - { label: "YouTube link", name: "youtube", widget: "url", required: false }
+                  - { label: "Spotify link", name: "spotify", widget: "url", required: false }
+                  - { label: "Apple Music link", name: "appleMusic", widget: "url", required: false }       
+
+          - label: "Show platform icons"
+            name: "platformsEnabled"
+            widget: "boolean"
+            default: true
+            hint: "Turn OFF to hide all platform icons. Turn ON to show icons (links below)."
 
           - label: "Music"
             name: "music"

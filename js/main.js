@@ -99,6 +99,54 @@
     sections.forEach((section) => observer.observe(section));
   }
 
+    // ---------- Hero: Render from CMS ----------
+  function renderHeroFromCMS() {
+    const heroSection = document.querySelector("#hero");
+    if (!heroSection) return;
+
+    // 1) Background image
+    const heroImg = heroSection.querySelector("img.hero-bg");
+    const bg = SITE_CONTENT?.hero?.bgImage;
+    if (heroImg && bg) {
+      const bgSrc = bg.startsWith("/") ? bg : `/${bg}`;
+      heroImg.src = bgSrc;
+    }
+
+    // 2) Platform icons on/off + links
+    const enabled = SITE_CONTENT?.hero?.platformsEnabled !== false; // default ON
+    const platformsWrap = heroSection.querySelector(".hero-platforms");
+    const links = SITE_CONTENT?.hero?.platforms || {};
+
+    if (!platformsWrap) return;
+
+    if (!enabled) {
+      platformsWrap.style.display = "none";
+      return;
+    }
+
+    platformsWrap.style.display = "";
+
+    const setLink = (ariaLabel, href) => {
+      const a = platformsWrap.querySelector(`a[aria-label="${ariaLabel}"]`);
+      if (!a) return;
+
+      if (href) {
+        a.href = href;
+        a.classList.remove("is-disabled");
+        a.setAttribute("tabindex", "0");
+      } else {
+        // If enabled but missing link, disable that icon (idiot proof)
+        a.removeAttribute("href");
+        a.classList.add("is-disabled");
+        a.setAttribute("tabindex", "-1");
+      }
+    };
+
+    setLink("YouTube", links.youtube);
+    setLink("Spotify", links.spotify);
+    setLink("Apple Music", links.appleMusic);
+  }
+
   // ---------- Music: Render from CMS ----------
   function renderMusicFromCMS() {
     const musicSection = document.querySelector("#music");
@@ -541,6 +589,7 @@ function clearNavAtPageEnd() {
       const response = await fetch("/content/site.json", { cache: "no-store" });
       SITE_CONTENT = await response.json();
 
+      renderHeroFromCMS();
       renderNewsFromCMS();
       renderMusicFromCMS(); 
 

@@ -1,11 +1,13 @@
 {
   "hero": {
-    "platforms": {
-      "youtube": "https://youtube.com/@exampleartist",
-      "spotify": "https://open.spotify.com/artist/EXAMPLE",
-      "appleMusic": "https://music.apple.com/artist/example"
-    }
-  },
+  "bgImage": "assets/images/hero-zipp-image.jpg",
+  "platformsEnabled": true,
+  "platforms": {
+    "youtube": "https://youtube.com/@exampleartist",
+    "spotify": "https://open.spotify.com/artist/EXAMPLE",
+    "appleMusic": "https://music.apple.com/artist/example"
+  }
+},
   "music": {
     "featuredVideoEmbedUrl": "",
     "cards": [
