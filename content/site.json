@@ -1,13 +1,13 @@
 {
   "hero": {
-  "bgImage": "assets/images/hero-zipp-image.jpg",
-  "platformsEnabled": true,
-  "platforms": {
-    "youtube": "https://youtube.com/@exampleartist",
-    "spotify": "https://open.spotify.com/artist/EXAMPLE",
-    "appleMusic": "https://music.apple.com/artist/example"
-  }
-},
+    "bgImage": "/assets/images/uploads/zipp-hero-image2-copy.jpg",
+    "platformsEnabled": true,
+    "platforms": {
+      "youtube": "https://youtube.com/@exampleartist",
+      "spotify": "https://open.spotify.com/artist/EXAMPLE",
+      "appleMusic": "https://music.apple.com/artist/example"
+    }
+  },
   "music": {
     "featuredVideoEmbedUrl": "",
     "cards": [
@@ -52,5 +52,6 @@
         "buttonText": "Read more"
       }
     ]
-  }
+  },
+  "platformsEnabled": true
 }
