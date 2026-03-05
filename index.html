@@ -7,6 +7,13 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
+  
+    <noscript>
+  <style>
+    .news-actions { display: none !important; }
+  </style>
+</noscript>
+
   <script src="js/main.js" defer></script>
 </head>
 
@@ -153,10 +160,33 @@
             action="mailto:zippora__@live.nl"
             method="post"
             enctype="text/plain"
-          >
-            <input type="text" name="name" placeholder="NAME" aria-label="Name" autocomplete="name" />
-            <input type="email" name="email" placeholder="EMAIL" aria-label="Email" autocomplete="email" />
-            <textarea name="message" rows="5" placeholder="MESSAGE" aria-label="Message"></textarea>
+            >
+            
+            <input
+              type="text"
+              name="name"
+              placeholder="NAME"
+              aria-label="Name"
+              autocomplete="name"
+              required
+            />
+
+            <input
+              type="email"
+              name="email"
+              placeholder="EMAIL"
+              aria-label="Email"
+              autocomplete="email"
+              required
+            />
+
+            <textarea
+              name="message"
+              rows="5"
+              placeholder="MESSAGE"
+              aria-label="Message"
+              required
+            ></textarea>
 
             <button type="submit" class="cta cta--dark cta--sm" id="contactSubmit">Open email</button>
           </form>

@@ -60,9 +60,9 @@ collections:
                     options: ["Stream now", "Coming soon"]
                     default: "Stream now"
 
-                  - { label: "Spotify link", name: "spotify", widget: "string" }
-                  - { label: "Apple Music link", name: "appleMusic", widget: "string" }
-                  - { label: "YouTube link", name: "youtube", widget: "string" }               
+                  - { label: "Spotify link (optional)", name: "spotify", widget: "string", required: false }
+                  - { label: "Apple Music link (optional)", name: "appleMusic", widget: "string", required: false }
+                  - { label: "YouTube link (optional)", name: "youtube", widget: "string", required: false }              
      
           - label: "News"
             name: "news"

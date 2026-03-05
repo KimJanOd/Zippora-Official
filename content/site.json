@@ -3,9 +3,9 @@
     "bgImage": "/assets/images/uploads/zipp-hero-image2-copy.jpg",
     "platformsClickable": false,
     "platforms": {
-      "youtube": "https://youtube.com/@exampleartist",
-      "spotify": "https://open.spotify.com/artist/EXAMPLE",
-      "appleMusic": "https://music.apple.com/artist/example"
+      "youtube": "",
+      "spotify": "",
+      "appleMusic": ""
     }
   },
   "music": {
@@ -13,9 +13,9 @@
     "cards": [
       {
         "coverImage": "/assets/images/uploads/zippora-single-cover-final-6.png",
-        "spotify": "https://example.com/spotify",
-        "appleMusic": "https://example.com/apple-music",
-        "youtube": "https://example.com/youtube",
+        "spotify": "",
+        "appleMusic": "",
+        "youtube": "",
         "statusLabel": "Coming soon"
       }
     ]
