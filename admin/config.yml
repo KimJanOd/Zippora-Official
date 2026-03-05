@@ -26,17 +26,17 @@ collections:
               - label: "Platform icons clickable"
                 name: "platformsClickable"
                 widget: "boolean"
-                default: true
-                hint: "Turn OFF to make icons not clickable, no links needed. Turn ON, add Platform links."
+                default: false
+                hint: "Turn OFF to make icons not clickable, no links needed. Turn ON, Platform links required."
 
               - label: "Platforms"
                 name: "platforms"
                 widget: "object"
                 collapsed: true
                 fields:
-                  - { label: "YouTube link (optional)", name: "youtube", widget: "string", required: false }
-                  - { label: "Spotify link (optional)", name: "spotify", widget: "string", required: false }
-                  - { label: "Apple Music link (optional)", name: "appleMusic", widget: "string", required: false }
+                  - { label: "YouTube link", name: "youtube", widget: "string", required: false }
+                  - { label: "Spotify link", name: "spotify", widget: "string", required: false }
+                  - { label: "Apple Music link", name: "appleMusic", widget: "string", required: false }
                       
           - label: "Music"
             name: "music"
@@ -59,10 +59,11 @@ collections:
                     widget: "select"
                     options: ["Stream now", "Coming soon"]
                     default: "Stream now"
+                    hint: "Add platform links when using 'Stream now'."
 
-                  - { label: "Spotify link (optional)", name: "spotify", widget: "string", required: false }
-                  - { label: "Apple Music link (optional)", name: "appleMusic", widget: "string", required: false }
-                  - { label: "YouTube link (optional)", name: "youtube", widget: "string", required: false }              
+                  - { label: "Spotify link", name: "spotify", widget: "string", required: false }
+                  - { label: "Apple Music link", name: "appleMusic", widget: "string", required: false }
+                  - { label: "YouTube link", name: "youtube", widget: "string", required: false }              
      
           - label: "News"
             name: "news"
@@ -76,9 +77,9 @@ collections:
                   - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
                   - { label: "Title", name: "title", widget: "string" }
                   - { label: "Description", name: "description", widget: "string" }
+                  - { label: "Button text", name: "buttonText", widget: "string" } 
                   - { label: "Link URL", name: "linkUrl", widget: "string" }
-                  - { label: "Button text", name: "buttonText", widget: "string" }                  
-
+                                   
           - label: "About"
             name: "about"
             widget: "object"

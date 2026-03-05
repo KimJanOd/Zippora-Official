@@ -15,7 +15,6 @@
     if (!header) return;
     const h = header.getBoundingClientRect().height;
     document.documentElement.style.setProperty("--header-h", `${h}px`);
-    document.documentElement.style.scrollPaddingTop = `${Math.ceil(h) + 8}px`;
   }
 
   function setHeaderScrolledClass() {
@@ -191,13 +190,19 @@
       // Locked label (not editable)
       const label = document.createElement("p");
       label.className = "ui-label label-icons__label";
-      label.textContent = card.statusLabel || "Stream now";
+      label.textContent = isComingSoon ? "Coming soon" : "Stream now";
 
       const icons = document.createElement("div");
       icons.className = "label-icons__icons";
       icons.setAttribute("aria-label", "Music platforms");
 
-      const isComingSoon = card.statusLabel === "Coming soon";
+      const hasLinks =
+      !!card.spotify ||
+      !!card.appleMusic ||
+      !!card.youtube;
+
+    const isComingSoon =
+      card.statusLabel === "Coming soon" || !hasLinks;
 
       // Helper to create icon links
       const makeIconLink = (href, ariaLabel, iconSrc) => {
