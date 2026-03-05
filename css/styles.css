@@ -155,6 +155,8 @@ svg {
 
     --music-label-size: var(--h4-size);
     --music-icon-size: 20px;
+
+    --about-overlap: -28px;
   }
 }
 
