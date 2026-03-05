@@ -136,7 +136,7 @@
         a.removeAttribute("rel");
       }
     });
-}
+  }
   // ---------- Music: Render from CMS ----------
   function renderMusicFromCMS() {
     const musicSection = document.querySelector("#music");
@@ -419,7 +419,7 @@
       copy.appendChild(p);
 
       const a = document.createElement("a");
-      a.className = "cta cta--dark cta--sm";
+      a.className = "cta cta--outline cta--sm";
       a.href = it.linkUrl;
       a.target = "_blank";
       a.rel = "noopener noreferrer";

@@ -66,7 +66,7 @@ svg {
   --body-size: 30px;
   --footer-size: 10px;
 
-  --weight-light: 300;
+  --weight-light: 200;
   --weight-regular: 400;
   --weight-bold: 700;
 
@@ -109,7 +109,7 @@ svg {
   --music-arrow-inset: -14px; /* tweak this number */
 
   /* ABOUT overlap token (fluid) */
---about-overlap: clamp(-75px, -6vw, -45px);
+--about-overlap: clamp(-70px, -6vw, -40px);
 }
 
 /* =========================================================
@@ -120,10 +120,10 @@ svg {
 @media (min-width: 834px) {
   :root {
     --grid-columns: 5;
-    --grid-margin: 80px;
     --grid-gutter: 24px;
+    --grid-margin: 80px;
 
-    --container-max: none; /* stretch */
+    --container-max: none;
   }
 }
 
@@ -134,7 +134,7 @@ svg {
     --grid-margin: 120px;
     --grid-gutter: 24px;
 
-    --container-max: 1440px; /* matches Figma frame */
+    --container-max: 1440px;
   }
 }
 
@@ -620,7 +620,6 @@ header nav a[href="#contact"] {
   text-align: right;
 
   line-height: 0.82;
-  letter-spacing: 0.01em;
   color: var(--color-light);
 
   transform: translateX(var(--hero-title-right-nudge));
@@ -688,13 +687,13 @@ header nav a[href="#contact"] {
 
 @media (min-width: 1240px) and (max-width: 1439px) {
   #hero {
-    height: clamp(600px, 46vw, 780px);
+    height: clamp(640px, 48vw, 840px);
   }
 }
 
 @media (min-width: 1440px) {
   #hero {
-    height: clamp(640px, 44vw, 860px);
+    height: clamp(680px, 44vw, 900px);
   }
 }
 
@@ -1009,6 +1008,7 @@ header nav a[href="#contact"] {
   width: 100%;
   display: block;
   border-radius: var(--radius);
+  aspect-ratio: 1 / 1;
   object-fit: cover;
 }
 
