@@ -592,7 +592,15 @@ function clearNavAtPageEnd() {
         form.setAttribute("action", `mailto:${contactEmail}`);
       }
 
-      // 3) Update About section (image + text)
+      // 3) Update Contact intro/subtext (fallback if empty)
+      const contactIntroEl = document.querySelector("[data-contact-intro]");
+      const contactIntro = (SITE_CONTENT?.contact?.intro || "").trim();
+
+      if (contactIntroEl && contactIntro) {
+        contactIntroEl.textContent = contactIntro;
+      }
+
+      // 4) Update About section (image + text)
       const aboutSection = document.querySelector("#about");
       if (aboutSection && SITE_CONTENT?.about) {
         const aboutImg = aboutSection.querySelector("img");

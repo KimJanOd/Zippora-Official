@@ -1,13 +1,12 @@
 {
   "hero": {
     "bgImage": "/assets/images/uploads/zipp-hero-image2-copy.jpg",
-    "platformsEnabled": true,
+    "platformsClickable": false,
     "platforms": {
       "youtube": "https://youtube.com/@exampleartist",
       "spotify": "https://open.spotify.com/artist/EXAMPLE",
       "appleMusic": "https://music.apple.com/artist/example"
-    },
-    "platformsClickable": false
+    }
   },
   "music": {
     "featuredVideoEmbedUrl": "",
@@ -17,17 +16,9 @@
         "spotify": "https://example.com/spotify",
         "appleMusic": "https://example.com/apple-music",
         "youtube": "https://example.com/youtube",
-        "streamLabel": "Stream Now",
         "statusLabel": "Coming soon"
       }
     ]
-  },
-  "about": {
-    "image": "/assets/images/uploads/zipp-intens.jpg",
-    "text": "Zippora is a pop powerhouse with a heart full of freedom and a head full of melodies. Born in The Hague and trained in performing arts, she writes and produces her own music: blending poppy synthesizers, electronic sparkles, and empowering energy. She loves working together with other passionate producers & musicians. Her debut release: 'FREE' drops March 27, 2026. Get ready!"
-  },
-  "contact": {
-    "emailTo": "Zippora__@live.nl"
   },
   "news": {
     "items": [
@@ -43,7 +34,7 @@
         "date": "2026-09-14",
         "description": "More info coming soon.",
         "linkUrl": "https://prinsjesnach.com/",
-        "buttonText": "read more"
+        "buttonText": "Read more"
       },
       {
         "title": "Indiburn Indigo Scheveningen, The Hague",
@@ -54,6 +45,12 @@
       }
     ]
   },
-  "platformsEnabled": true,
-  "platformsClickable": true
+  "about": {
+    "image": "/assets/images/uploads/zipp-intens.jpg",
+    "text": "Zippora is a pop powerhouse with a heart full of freedom and a head full of melodies. Born in The Hague and trained in performing arts, she writes and produces her own music: blending poppy synthesizers, electronic sparkles, and empowering energy. She loves working together with other passionate producers & musicians. Her debut release: 'FREE' drops March 27, 2026. Get ready!"
+  },
+  "contact": {
+  "emailTo": "Zippora__@live.nl",
+  "intro": "So excited to hear from you!"
+  }
 }

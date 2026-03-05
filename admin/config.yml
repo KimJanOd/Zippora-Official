@@ -91,3 +91,8 @@ collections:
             widget: "object"
             fields:
               - { label: "Contact email", name: "emailTo", widget: "string" }
+              - label: "Contact intro"
+                name: "intro"
+                widget: "string"
+                required: false
+                hint: "Short sentence under 'Get in touch'. Leave empty to use the website fallback text."
