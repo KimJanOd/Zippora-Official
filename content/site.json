@@ -1,7 +1,7 @@
 {
   "hero": {
     "bgImage": "/assets/images/uploads/zipp-hero-image2-copy.jpg",
-    "platformsClickable": false,
+    "platformsClickable": true,
     "platforms": {
       "youtube": "",
       "spotify": "",
