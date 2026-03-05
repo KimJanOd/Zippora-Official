@@ -6,7 +6,8 @@
       "youtube": "https://youtube.com/@exampleartist",
       "spotify": "https://open.spotify.com/artist/EXAMPLE",
       "appleMusic": "https://music.apple.com/artist/example"
-    }
+    },
+    "platformsClickable": false
   },
   "music": {
     "featuredVideoEmbedUrl": "",
