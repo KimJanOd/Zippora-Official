@@ -99,7 +99,7 @@
     sections.forEach((section) => observer.observe(section));
   }
 
-    // ---------- Hero: Render from CMS ----------
+  // ---------- Hero: Render from CMS ----------
   function renderHeroFromCMS() {
     const heroSection = document.querySelector("#hero");
     if (!heroSection) return;
@@ -117,27 +117,26 @@
     const links = SITE_CONTENT?.hero?.platforms || {};
 
     const iconLinks = heroSection.querySelectorAll(".platform-icons a");
-    if (iconLinks.length) {
-      iconLinks.forEach((a) => {
-        const label = (a.getAttribute("aria-label") || "").toLowerCase();
+    iconLinks.forEach((a) => {
+      const label = (a.getAttribute("aria-label") || "").toLowerCase();
 
-    let url = "";
-    if (label.includes("youtube")) url = links.youtube || "";
-    if (label.includes("spotify")) url = links.spotify || "";
-    if (label.includes("apple")) url = links.appleMusic || "";
+      let url = "";
+      if (label.includes("youtube")) url = links.youtube || "";
+      if (label.includes("spotify")) url = links.spotify || "";
+      if (label.includes("apple")) url = links.appleMusic || "";
 
-    if (clickable && url) {
-      a.classList.remove("is-disabled");
-      a.setAttribute("href", url);
-      a.setAttribute("target", "_blank");
-      a.setAttribute("rel", "noopener noreferrer");
-    } else {
-      a.classList.add("is-disabled");
-      a.removeAttribute("href");
-      a.removeAttribute("target");
-      a.removeAttribute("rel");
-    }
-  });
+      if (clickable && url) {
+        a.classList.remove("is-disabled");
+        a.setAttribute("href", url);
+        a.setAttribute("target", "_blank");
+        a.setAttribute("rel", "noopener noreferrer");
+      } else {
+        a.classList.add("is-disabled");
+        a.removeAttribute("href");
+        a.removeAttribute("target");
+        a.removeAttribute("rel");
+      }
+    });
 }
   // ---------- Music: Render from CMS ----------
   function renderMusicFromCMS() {
@@ -387,8 +386,6 @@
     list.innerHTML = "";
 
     // Render using your existing markup structure
-    console.log("renderItems[0]", renderItems[0]);
-
     renderItems.forEach((it) => {
       const article = document.createElement("article");
       article.className = "news-item";
@@ -396,12 +393,6 @@
       if (it._dt && it._dt < todayUTC) {
       article.classList.add("is-past");
     }
-
-    // Add class for past events
-     if (it._dt < todayUTC) {
-      article.classList.add("is-past");
-      }
-
       const time = document.createElement("time");
       time.className = "news-date ui-label";
       time.setAttribute("datetime", it.date);
@@ -623,7 +614,6 @@ function clearNavAtPageEnd() {
       console.error("Error loading site content:", error);
     }
   }
-}
 
   // ---------- Init ----------
   async function init() {
