@@ -1001,6 +1001,10 @@ header nav a[href="#contact"] {
   padding-top: 10px;
 }
 
+#about [data-about-text] {
+  white-space: pre-line;
+}
+
 @media (max-width: 600px) {
   #about .about-image {
     width: 75%;

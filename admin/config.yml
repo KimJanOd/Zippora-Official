@@ -84,7 +84,11 @@ collections:
             widget: "object"
             fields:
               - { label: "About image", name: "image", widget: "image" }
-              - { label: "About text", name: "text", widget: "markdown" }
+              - label: "About text"
+                name: "text"
+                widget: "text"
+                required: false
+                hint: "Plain text. Use line breaks to create paragraphs."
 
           - label: "Contact"
             name: "contact"
