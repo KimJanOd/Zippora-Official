@@ -158,7 +158,7 @@
         iframe.src = embedUrl;
       } else {
         // hide + clear src so old video doesn't "stick"
-        iframe.src = "";
+        iframe.removeAttribute("src");
         featuredWrap.style.display = "none";
       }
     }
@@ -188,6 +188,16 @@
       labelIcons.className = "label-icons";
 
       // Locked label (not editable)
+      const spotify = (card.spotify || "").trim();
+      const appleMusic = (card.appleMusic || "").trim();
+      const youtube = (card.youtube || "").trim();
+
+      const hasLinks = !!spotify || !!appleMusic || !!youtube;
+
+      const isComingSoon =
+        card.statusLabel === "Coming soon" || !hasLinks;
+
+      // Locked label (auto-corrected)
       const label = document.createElement("p");
       label.className = "ui-label label-icons__label";
       label.textContent = isComingSoon ? "Coming soon" : "Stream now";
@@ -195,14 +205,6 @@
       const icons = document.createElement("div");
       icons.className = "label-icons__icons";
       icons.setAttribute("aria-label", "Music platforms");
-
-      const hasLinks =
-      !!card.spotify ||
-      !!card.appleMusic ||
-      !!card.youtube;
-
-    const isComingSoon =
-      card.statusLabel === "Coming soon" || !hasLinks;
 
       // Helper to create icon links
       const makeIconLink = (href, ariaLabel, iconSrc) => {
@@ -227,13 +229,13 @@
 
       // Always render the icons in the same order (you can decide later if you want to hide missing ones)
       icons.appendChild(
-        makeIconLink(card.spotify, "Spotify", "assets/icons/spotify.svg")
+        makeIconLink(spotify, "Spotify", "assets/icons/spotify.svg")
       );
       icons.appendChild(
-        makeIconLink(card.appleMusic, "Apple Music", "assets/icons/apple-music.svg")
+        makeIconLink(appleMusic, "Apple Music", "assets/icons/apple-music.svg")
       );
       icons.appendChild(
-        makeIconLink(card.youtube, "YouTube", "assets/icons/youtube.svg")
+        makeIconLink(youtube, "YouTube", "assets/icons/youtube.svg")
       );
 
       labelIcons.appendChild(label);
