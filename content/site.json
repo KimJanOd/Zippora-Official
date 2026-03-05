@@ -54,6 +54,13 @@
         "description": "A yearly beach festival night with DJ and performances.",
         "linkUrl": "https://beachclubindigo.nl/events-agenda/",
         "buttonText": "Read more"
+      },
+      {
+        "date": "2026-03-26",
+        "title": "Placeholder",
+        "description": "Placeholder",
+        "buttonText": "Placeholder",
+        "linkUrl": "https://github.com/KimJanOd/Zippora-Official"
       }
     ]
   },
