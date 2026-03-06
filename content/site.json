@@ -1,6 +1,6 @@
 {
   "hero": {
-    "bgImage": "/assets/images/uploads/zipp-hero-image.png",
+    "bgImage": "/assets/images/uploads/hero-zipp-image.png",
     "platformsClickable": false,
     "platforms": {
       "youtube": "",
@@ -12,7 +12,7 @@
     "featuredVideoEmbedUrl": "",
     "cards": [
       {
-        "coverImage": "/assets/images/uploads/zippora-single-cover-final-6.png",
+        "coverImage": "/assets/images/uploads/free-cover.png",
         "spotify": "",
         "appleMusic": "",
         "youtube": "",
@@ -20,11 +20,11 @@
       },
       {
         "statusLabel": "Stream now",
-        "coverImage": "/assets/images/uploads/zippora-single-cover-final-6.png"
+        "coverImage": "/assets/images/uploads/free-cover.png"
       },
       {
         "statusLabel": "Stream now",
-        "coverImage": "/assets/images/uploads/zippora-single-cover-final-6.png"
+        "coverImage": "/assets/images/uploads/free-cover.png"
       }
     ]
   },
@@ -54,7 +54,7 @@
     ]
   },
   "about": {
-    "image": "/assets/images/uploads/zipp-smile.jpg",
+    "image": "/assets/images/uploads/about-zipp-smile.png",
     "text": "Zippora is a pop powerhouse with a heart full of freedom and a head full of melodies. Born in The Hague and trained in performing arts, she writes and produces her own music: blending poppy synthesizers, electronic sparkles, and empowering energy. She loves working together with other passionate producers & musicians. \n\nHer debut release 'FREE' drops March 27, 2026"
   },
   "contact": {
