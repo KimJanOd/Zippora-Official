@@ -1,6 +1,6 @@
 {
   "hero": {
-    "bgImage": "/assets/images/uploads/zipp-hero-image2-copy.jpg",
+    "bgImage": "/assets/images/uploads/zipp-hero-image.png",
     "platformsClickable": false,
     "platforms": {
       "youtube": "",
